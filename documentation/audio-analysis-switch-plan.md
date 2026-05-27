@@ -62,7 +62,7 @@ The two `/gol` Python scripts (`seed_top_callbacks`, `pattern_ctrl_callbacks`) e
 flowchart LR
     AI[audio_in\nAudioDeviceIn CHOP] --> AA[audioAnalysis\nContainer COMP]
     AA -->|out1| OAV[out_audio_vals\nNull CHOP]
-    OAV --> SEL[/gol/sel_audio\nSelect CHOP]
+    OAV --> SEL["/gol/sel_audio\nSelect CHOP"]
 ```
 
 Only three operators remain: `audio_in`, `audioAnalysis`, `out_audio_vals`.

@@ -289,7 +289,7 @@ flowchart TD
     G4 -->|sGoLState sampler| R7
     U4 -->|sUnderlayer sampler| R7
     R9 --> C1
-    C2 --> OUT[/output/win1]
+    C2 --> OUT["/output/win1"]
 ```
 
 ---

@@ -40,7 +40,7 @@ No Switch TOP or Feedback TOP restructuring needed — the feedback loop topolog
 
 ```mermaid
 flowchart LR
-    OAV[/project1/audio/out_audio_vals] -->|kick channel| KS[kick_sel\nSelect CHOP]
+    OAV["/project1/audio/out_audio_vals"] -->|kick channel| KS[kick_sel\nSelect CHOP]
     KS --> KP[kick_pulse\nLogic CHOP\nrising edge mode]
     KP --> KG[kick_gate\nNull CHOP]
     KG -->|uAdvance uniform| GC[gol_compute\nGLSL TOP]
