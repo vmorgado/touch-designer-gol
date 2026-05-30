@@ -9,8 +9,25 @@ A live-performance visual system built in TouchDesigner. A 32×32 grid of 3D cub
 ```
 touch-designer-claude/
 ├── CLAUDE.md                  # This file
-├── documentation/
-│   └── requirements.md        # Full project requirements
+├── documentation/             # Legacy docs — migrated to OpenSpec (kept for reference)
+│   ├── requirements.md        # Original requirements (superseded by openspec/specs/)
+│   ├── implementation-report.md  # Full build log with deviations
+│   ├── audio-mapping.md       # Audio channel reference
+│   └── (historical plans)
+├── openspec/                  # OpenSpec documentation (source of truth)
+│   ├── specs/                 # Current-state capability specs
+│   │   ├── audio-analysis/    # Audio input, band extraction, onset detection
+│   │   ├── gol-simulation/    # Conway's GoL GPU compute + feedback loop
+│   │   ├── audio-gol-seeding/ # Audio → cell seeding + pattern injection
+│   │   ├── instanced-rendering/ # 32×32 cube grid, GLSL MAT, camera
+│   │   ├── underlayer/        # Switchable background source
+│   │   ├── smooth-state/      # Lerp feedback for smooth transitions
+│   │   └── camera-shake/      # fmsd-driven camera jitter
+│   └── changes/archive/       # Completed changes (historical record)
+│       ├── 2026-05-30-core-system/
+│       ├── 2026-05-30-pattern-seed-library/
+│       ├── 2026-05-30-kick-gated-generation/
+│       └── 2026-05-30-audio-analysis-upgrade/
 └── (TouchDesigner .toe files will live here)
 ```
 
@@ -43,7 +60,12 @@ touch-designer-claude/
 ## Working with Claude
 
 - Always use Mermaid (` ```mermaid `) for any diagrams or flowcharts — never ASCII art
-- Always read `documentation/requirements.md` before starting any new network component
+- **Documentation is in OpenSpec format** — use `openspec/specs/` as the source of truth for current capability requirements. Legacy `documentation/` files are kept for historical reference only.
+- Before starting any new network component, read the relevant spec in `openspec/specs/<capability>/spec.md`
+- To understand the current state of a capability: `openspec spec show <capability-name>` (e.g. `openspec spec show audio-analysis`)
+- To list all specs: `openspec spec list`
+- To propose and track a new change: use `/opsx:propose` (creates proposal → specs delta → design → tasks in `openspec/changes/`)
+- To apply and archive a completed change: use `/opsx:apply` then `openspec archive <change-name> --yes`
 - Prefer GLSL-based compute for the Game of Life grid (TOP pixel-per-cell pattern)
 - Use instancing for the 32×32 cube grid — avoid 1024 separate geometry COMPs
 - Keep audio analysis in a dedicated `/audio` base COMP
