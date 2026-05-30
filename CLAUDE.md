@@ -9,20 +9,16 @@ A live-performance visual system built in TouchDesigner. A 32×32 grid of 3D cub
 ```
 touch-designer-claude/
 ├── CLAUDE.md                  # This file
-├── documentation/             # Legacy docs — migrated to OpenSpec (kept for reference)
-│   ├── requirements.md        # Original requirements (superseded by openspec/specs/)
-│   ├── implementation-report.md  # Full build log with deviations
-│   ├── audio-mapping.md       # Audio channel reference
-│   └── (historical plans)
 ├── openspec/                  # OpenSpec documentation (source of truth)
 │   ├── specs/                 # Current-state capability specs
-│   │   ├── audio-analysis/    # Audio input, band extraction, onset detection
+│   │   ├── audio-analysis/    # Audio input, band extraction, onset detection, channel mappings
 │   │   ├── gol-simulation/    # Conway's GoL GPU compute + feedback loop
 │   │   ├── audio-gol-seeding/ # Audio → cell seeding + pattern injection
 │   │   ├── instanced-rendering/ # 32×32 cube grid, GLSL MAT, camera
 │   │   ├── underlayer/        # Switchable background source
 │   │   ├── smooth-state/      # Lerp feedback for smooth transitions
-│   │   └── camera-shake/      # fmsd-driven camera jitter
+│   │   ├── camera-shake/      # fmsd-driven camera jitter
+│   │   └── runtime-tuning/    # Live performance parameter reference
 │   └── changes/archive/       # Completed changes (historical record)
 │       ├── 2026-05-30-core-system/
 │       ├── 2026-05-30-pattern-seed-library/
